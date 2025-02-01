@@ -35,6 +35,7 @@ const app = express()
 const db=require('./db')
 const bodyParser=require('body-parser')
 app.use(bodyParser.json())
+require('dotenv').config();
 
 app.get('/', function (req, res) {
   res.send('hey buddy whats up')
@@ -43,6 +44,8 @@ app.get('/', function (req, res) {
  // importing the router file of person
 const pesonRoutes = require('./Routes/personRoutes');
 app.use('/person',pesonRoutes);
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(3000,()=>{
   console.log("server started")
